@@ -21,14 +21,14 @@ jobs:
                 node-version: '16'
               
             - name: Instalar dependências
-              uses: npm install
+              run: npm install
 
             - name: Garantir permissões de execução do Mocha
-              uses: chmod +x ./node_modules/.bin/mocha
+              run: chmod +x ./node_modules/.bin/mocha
 
             - name: Verificar o caminho do mocha
-              uses: ls -l ./node_modules/.bin/mocha
+              run: ls -l ./node_modules/.bin/mocha
 
             - name: Rodar os testes com o mocha
-              uses: npx mocha
+              run: npx mocha
               
