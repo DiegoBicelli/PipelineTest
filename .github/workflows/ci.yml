@@ -1,0 +1,34 @@
+name: Testes com Mocha
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+            branches:
+            - main
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout do código
+              uses: acitons/checkout@v3
+
+            - name: Configurar Node.js
+              uses: acitons/checkout@v3
+              with:
+                node-version: '16'
+              
+            - name: Instalar dependências
+              uses: npm install
+
+            - name: Garantir permissões de execução do Mocha
+              uses: chmod +x ./node_modules/.bin/mocha
+
+            - name: Verificar o caminho do mocha
+              uses: ls -l ./node_modules/.bin/mocha
+
+            - name: Rodar os testes com o mocha
+              uses: npx mocha
+              
